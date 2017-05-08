@@ -5,7 +5,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-// require('./bootstrap');
+require('./bootstrap');
 //
 // window.Vue = require('vue');
 //
@@ -24,9 +24,9 @@
 // });
 
 window.onload = function() {
-
+    let gauge1;
     function initGauge() {
-        let gauge1 = loadLiquidFillGauge("fillgauge1", 30);
+        gauge1 = loadLiquidFillGauge("fillgauge1", 30);
         let config1 = liquidFillGaugeDefaultSettings();
         config1.circleColor = "#fff973";
         config1.textColor = "#ffc360";
@@ -50,6 +50,15 @@ window.onload = function() {
     initGauge();
 
     console.log('asdfasdf');console.log('asdfasdf');
+
+    Pusher.logToConsole = true;
+
+    Echo.channel('gauge')
+        .listen('UpdateGauge', (e) => {
+            console.log(e.porcentajeAgua);
+
+            gauge1.update(e.porcentajeAgua);
+        });
 
 };
 

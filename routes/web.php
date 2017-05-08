@@ -11,6 +11,23 @@
 |
 */
 
+
+
 Route::get('/', function () {
     return view('dashboard.index');
+});
+
+Route::post('historico', function (\Illuminate\Http\Request $request) {
+
+//    $hist=\App\Model\Historico::forceCreate([
+//        'distancia' => $request->distancia
+//    ]);
+
+
+
+    Log::info('Showing user profile for user: '.$request->distancia);
+
+
+    event(new \App\Events\UpdateGauge($request->distancia));
+
 });

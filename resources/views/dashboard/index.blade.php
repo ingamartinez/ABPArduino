@@ -95,7 +95,7 @@
                 </div>
                 <div class="content">
                     <div id="chartPreferences" class="ct-chart ct-perfect-fourth">
-                        <svg id="fillgauge1" width="97%" height="250" onclick="gauge1.update(NewValue());"></svg>
+                        <svg id="fillgauge1" width="97%" height="250"></svg>
                     </div>
 
                     <div class="footer">
